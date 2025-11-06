@@ -58,7 +58,23 @@ Todas as funcionalidades do plugin Time Series original foram mantidas:
    sudo systemctl restart grafana-server
    ```
 
-### Método 2: Docker
+### Método 2: Docker (Recomendado)
+
+#### Opção A: Docker Compose (Mais Fácil)
+
+Clone o repositório e execute:
+
+```bash
+git clone https://github.com/vericode-io/grafana-inverted-timeseries-plugin.git
+cd grafana-inverted-timeseries-plugin
+./start.sh
+```
+
+Acesse: http://localhost:3000 (admin/admin)
+
+Para mais detalhes, consulte [DOCKER.md](DOCKER.md)
+
+#### Opção B: Docker Run
 
 Monte o plugin como volume:
 ```bash
@@ -68,6 +84,14 @@ docker run -d \
   -e "GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=grafana-timeseries-vertical-plugin" \
   --name=grafana \
   grafana/grafana:latest
+```
+
+### Método 3: Clonar do GitHub
+
+```bash
+git clone https://github.com/vericode-io/grafana-inverted-timeseries-plugin.git
+sudo cp -r grafana-inverted-timeseries-plugin /var/lib/grafana/plugins/grafana-timeseries-vertical-plugin
+sudo systemctl restart grafana-server
 ```
 
 ## Uso
